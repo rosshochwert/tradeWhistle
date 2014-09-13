@@ -11,9 +11,10 @@ TradeWhistle::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'index#login'
 
-  get '/authorize' => 'index#authorize'
 
   get '/oauth/callback' => 'index#confirmed'
+
+  get '/import' => 'teams#import'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

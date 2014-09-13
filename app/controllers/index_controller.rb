@@ -29,7 +29,7 @@ class IndexController < ApplicationController
   	@consumer_key = session[:consumer_key]
   	@consumer_secret = session[:consumer_secret]
   	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
-  	@json_response = @access_token.request(:get, "http://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/teams?output=json") # returns a Net::HTTPOK object, which needs to be converted to a JSON hash to be imported into Mongo
+  	@json_response = @access_token.request(:get, "http://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/teams?format=json")
 	@json_hash = JSON.parse(@json_response.body)
   end
 

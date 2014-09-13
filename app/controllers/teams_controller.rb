@@ -51,6 +51,21 @@ class TeamsController < ApplicationController
     end
   end
 
+
+
+
+
+  #method to import all of the data form the league into the database
+  def import
+
+  end
+
+
+
+
+
+
+
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
