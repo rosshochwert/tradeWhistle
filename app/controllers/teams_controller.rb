@@ -58,6 +58,10 @@ class TeamsController < ApplicationController
   #method to import all of the data form the league into the database
   def import
 
+    
+    #make a call to the api to get a league, choose the first league and get all of the data
+    Teams.import(data)
+
   end
 
 
