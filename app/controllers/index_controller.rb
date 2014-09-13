@@ -36,14 +36,14 @@ class IndexController < ApplicationController
 	@league_key = @json_hash["fantasy_content"]
 	@league_key = @json_hash["fantasy_content"]["users"]
 	@league_key = @json_hash["fantasy_content"]["users"]["0"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]["league"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]["league"]["league_key"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"]["leages"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"]["leages"]["0"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"]["leages"]["0"]["league"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"]["leages"]["0"]["league"]["league_key"]
 
   end
 
