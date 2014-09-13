@@ -33,9 +33,6 @@ class IndexController < ApplicationController
 	@json_hash = JSON.parse(@json_response.body)
   end
 
-  def register
-  end
-
   def retrieveYahoo
 	@auth_consumer=OAuth::Consumer.new @consumer_key, 
 								  @consumer_secret, {
