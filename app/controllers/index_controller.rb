@@ -31,6 +31,30 @@ class IndexController < ApplicationController
   	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
   end
 
+  #method to import all of the data form the league into the database
+  def import
+    @leagueKey = getLeagueKey
+    getTeams(@league_key)
+
+    #make a call to the api to get a league, choose the first league and get all of the data
+    #Team.import(stuff)
+
+  end
+
+
+  def getLeagueKey
+    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
+    @json_response = @access_token.request(:get, @urlLeagueKey)
+    @json_hash = JSON.parse(@json_response.body)
+    @league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]["league_key"]
+  end
+
+  def getTeams(key)
+    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/league/' + key + '/teams'
+    @json_response = @access_token.request(:get, @url)
+    @json_hash = JSON.parse(@json_response.body)
+  end
+
   def retrieveYahoo
 	@auth_consumer=OAuth::Consumer.new @consumer_key, 
 								  @consumer_secret, {

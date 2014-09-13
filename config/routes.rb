@@ -14,7 +14,7 @@ TradeWhistle::Application.routes.draw do
 
   get '/oauth/callback' => 'index#confirmed'
 
-  get '/import' => 'teams#import'
+  get '/import' => 'index#import'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
