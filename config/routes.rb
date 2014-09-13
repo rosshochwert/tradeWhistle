@@ -12,6 +12,8 @@ TradeWhistle::Application.routes.draw do
   root 'index#login'
 
   get '/authorize' => 'index#authorize'
+
+  get '/oauth/callback' => 'index#confirmed'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

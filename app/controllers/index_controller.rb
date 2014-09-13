@@ -1,11 +1,11 @@
 class IndexController < ApplicationController
   def login
-  	@consumer_key = "dj0yJmk9MEI3TUJTY2p4ejd0JmQ9WVdrOWMxVnBibmh4TldjbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD00Yg--"
-	@consumer_secret = "1d72c082a87b6ac66fa9e02fb33efe215da500af"
+  	@consumer_key = "dj0yJmk9d29mS1IyVDlQOXFHJmQ9WVdrOVEyeFRXbVY0TjJFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD01Yw--"
+	@consumer_secret = "86c4259ad8ac9bf6a36998eb01adac8147eb1184"
 	# DO NOT EDIT THESE VALUES
 	# Oauth variables
 	# Yahoo Oauth Request Token Path
-	@callback_url = "http://localhost:3000/oauth/callback"
+	@callback_url = "http://tradewhistle.herokuapp.com/oauth/callback"
 
 	@yahoo_oauth_request_token_path = '/oauth/v2/get_request_token'
 	# Yahoo Oauth Access Token Path
@@ -18,6 +18,10 @@ class IndexController < ApplicationController
 	retrieveYahoo
 
 	@link = @request_token.authorize_url(:oauth_callback => @callback_url)
+  end
+
+  def confirmed
+  	puts "you are approved!!!"
   end
 
   def authorize
@@ -55,7 +59,7 @@ class IndexController < ApplicationController
 								   }
  
 	# Set request token 
-	@request_token = @auth_consumer.get_request_token(:oauth_callback => '')
+	@request_token = @auth_consumer.get_request_token(:oauth_callback => @callback_url)
 	session[:request_token] = @request_token
 
 	puts @request_token
