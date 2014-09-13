@@ -21,7 +21,11 @@ class IndexController < ApplicationController
   end
 
   def confirmed
-  	puts "you are approved!!!"
+  	verifier_code = params[:code]
+  	@request_token = session[:request_token]
+  	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
+  	@json_response = @access_token.request(:get, "http://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/teams") # returns a Net::HTTPOK object, which needs to be converted to a JSON hash to be imported into Mongo
+
   end
 
   def authorize
@@ -35,7 +39,6 @@ class IndexController < ApplicationController
   	puts "here she is"
   	puts @request_token
   	puts "that was the request token"
-  	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
 
   	@json_response = @access_token.request(:get, "http://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/teams") # returns a Net::HTTPOK object, which needs to be converted to a JSON hash to be imported into Mongo
 	#@json_hash = JSON.parse(@json_response.body) # converts the Net object to a Hash
