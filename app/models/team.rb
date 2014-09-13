@@ -3,13 +3,7 @@ class Team < ActiveRecord::Base
 
 
 	def self.import(data)
-		data.each do |key, value|
-		  alert key
-		  value.each do |k,v|
-		    alert k
-		    alert v
-		  end
-		end
+
 	end
 
 
