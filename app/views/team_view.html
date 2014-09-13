@@ -9,6 +9,7 @@
         <script src="bootstrap-switch.js"></script>
         <script src="jquery-2.1.1.js"></script>
         <script src="bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -61,13 +62,18 @@
               </ul>
             </div>
        </div>
-
+        </div>
         <div class = "row">
-            <div class
+            <div class = "col-md-2 col-sm-height cur-team">
+            <h3>Your Team</h3></div>
+            <div class = "col-md-2 col-sm-height opp-team">
+            <h3>Opp Team</h3></div>
+            <div class = "col-md-8 col-sm-height all-team"></div>
           </div>
     </div>
     <script>
         $("[name='my-checkbox']").bootstrapSwitch();
     </script>
+    <script src = "team_view.js"></script>
     </body>
 </html>
