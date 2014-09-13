@@ -66,6 +66,7 @@ class TeamsController < ApplicationController
 
 
   def getLeagueKey
+    @access_token = session[:access_token]
     @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
     @json_response = @access_token.request(:get, @urlLeagueKey)
     @json_hash = JSON.parse(@json_response.body)
