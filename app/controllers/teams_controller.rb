@@ -56,11 +56,12 @@ class TeamsController < ApplicationController
     @leagueKey = getLeagueKey
     @teams = getTeams(@league_key)
     @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
-    for teams in @teamHash
-      key = teams["team"]
-      key = teams["team"][0]
-      key = teams["team"][0][0]
-      name = teams["team"][0][2]
+    for team in @teamHash
+      puts team
+      key = team["team"]
+      key = team["team"][0]
+      key = team["team"][0][0]
+      name = team["team"][0][2]
       Team.create!(:key => key, :name => name)
     end
 
