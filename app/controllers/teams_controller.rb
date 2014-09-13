@@ -55,6 +55,13 @@ class TeamsController < ApplicationController
   def importData
     @leagueKey = getLeagueKey
     @teams = getTeams(@league_key)
+    @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
+    for teams in @teamHash
+      key = teams["team"][0][0]
+      name = teams["team"][0][2]
+      Team.create!(:key => key, :name => name)
+    end
+
     #make a call to the api to get a league, choose the first league and get all of the data
     #Team.import(stuff)
   end
