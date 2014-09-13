@@ -56,24 +56,11 @@ class TeamsController < ApplicationController
     @leagueKey = getLeagueKey
     @teams = getTeams(@league_key)
     @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
-    for team in @teamHash
-
-      puts team.class.name
-
-      key = team[0]
-      puts key.class.name 
-
-      key2 = team[0]["team"]
-      puts key2
-      puts key2.class.name
-
+    @teamHash.each do |key,value|
       puts key
+      puts value
 
-      name = team[0]["team"][0][2]
-
-      puts name
-
-      Team.create!(:key => key, :name => name)
+     # Team.create!(:key => key, :name => name)
     end
 
     #make a call to the api to get a league, choose the first league and get all of the data
