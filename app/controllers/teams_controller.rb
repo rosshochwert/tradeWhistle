@@ -54,13 +54,10 @@ class TeamsController < ApplicationController
 
   def importData
     @leagueKey = getLeagueKey
-    getTeams(@league_key)
-
+    @teams = getTeams(@league_key)
     #make a call to the api to get a league, choose the first league and get all of the data
     #Team.import(stuff)
-
   end
-
 
   def getLeagueKey
     @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
