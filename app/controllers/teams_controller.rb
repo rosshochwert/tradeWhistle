@@ -97,6 +97,9 @@ class TeamsController < ApplicationController
 }'
 
     stuff = JSON.parse(string)
+
+    puts "this is the stuff"
+    puts stuff
     #make a call to the api to get a league, choose the first league and get all of the data
     Team.import(stuff)
 

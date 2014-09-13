@@ -4,6 +4,9 @@ class Team < ActiveRecord::Base
 	def self.import(data)
 		#loop through each team in data, create a team object for them
 		for team in data
+
+			puts team
+			puts team["name"]
 			@newTeam = Team.create(:name => team["name"])
 
 			#loop through all the players in a team (assuming they get returned and add them)
