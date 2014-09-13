@@ -42,8 +42,8 @@ class IndexController < ApplicationController
 	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]
 	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]
 	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][1]
-	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][1]["league_key"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]["league_key"]
 
   end
 
