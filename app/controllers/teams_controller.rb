@@ -67,7 +67,7 @@ class TeamsController < ApplicationController
   end
 
   def getTeams(key)
-    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/league/' + key + '/teams'
+    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/league/' + key + '/teams?format=json'
     @json_response = $access_token.request(:get, @url)
     @json_hash = JSON.parse(@json_response.body)
   end
