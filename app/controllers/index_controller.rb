@@ -32,7 +32,18 @@ class IndexController < ApplicationController
   	@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
   	@json_response = @access_token.request(:get, @urlLeagueKey)
 	@json_hash = JSON.parse(@json_response.body)
-	@league_key = @json_hash[0]["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]["league"]["league_key"]
+
+	@league_key = @json_hash["fantasy_content"]
+	@league_key = @json_hash["fantasy_content"]["users"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]["league"]
+	@league_key = @json_hash["fantasy_content"]["users"]["0"]["user"]["games"]["0"]["game"]["leages"]["0"]["league"]["league_key"]
 
   end
 
