@@ -58,7 +58,14 @@ class TeamsController < ApplicationController
     @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
     for team in @teamHash
 
-      key = team[0]["team"][0][0]
+      puts team.class.name
+
+      key = team[0]
+      puts key.class.name 
+
+      key2 = team[0]["team"]
+      puts key2
+      puts key2.class.name
 
       puts key
 
