@@ -2,6 +2,9 @@ class IndexController < ApplicationController
   def login
   	@consumer_key = "dj0yJmk9d29mS1IyVDlQOXFHJmQ9WVdrOVEyeFRXbVY0TjJFbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD01Yw--"
 	@consumer_secret = "86c4259ad8ac9bf6a36998eb01adac8147eb1184"
+  	
+  	session[:consumer_secret] = @consumer_secret
+  	session[:consumer_key] = @consumer_key
 	# DO NOT EDIT THESE VALUES
 	# Oauth variables
 	# Yahoo Oauth Request Token Path
@@ -21,10 +24,11 @@ class IndexController < ApplicationController
   end
 
   def confirmed
-  	#verifier_code = params[:oauth_verifier]
+  	verifier_code = params[:oauth_verifier]
   	@request_token = session[:request_token]
-  	@access_token = @request_token.get_access_token
-
+  	@consumer_key = session[:consumer_key]
+  	@consumer_secret session[:consumer_secret]
+  	@access_token = @request_token.get_access_token(:verifier_code => verifier_code)
   	@json_response = @access_token.request(:get, "http://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/teams") # returns a Net::HTTPOK object, which needs to be converted to a JSON hash to be imported into Mongo
 
   end
@@ -33,8 +37,6 @@ class IndexController < ApplicationController
   end
 
   def retrieveYahoo
-  	puts "im being called!!!!"
-
 	@auth_consumer=OAuth::Consumer.new @consumer_key, 
 								  @consumer_secret, {
 								  :site					=> @yahoo_oauth_url,
@@ -48,7 +50,5 @@ class IndexController < ApplicationController
 	# Set request token 
 	@request_token = @auth_consumer.get_request_token(:oauth_callback => @callback_url)
 	session[:request_token] = @request_token
-
-	puts @request_token
   end
 end
