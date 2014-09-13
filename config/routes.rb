@@ -1,4 +1,6 @@
 TradeWhistle::Application.routes.draw do
+  get "index/login"
+  get "index/register"
   resources :players
 
   resources :teams
