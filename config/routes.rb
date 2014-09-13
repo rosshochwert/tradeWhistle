@@ -1,4 +1,5 @@
 TradeWhistle::Application.routes.draw do
+  get "users/new"
   get "sessions/new"
   get "sessions/create"
   get "sessions/failure"
@@ -19,9 +20,6 @@ TradeWhistle::Application.routes.draw do
 
   get '/import' => 'index#import'
 
-  get '/login', :to => 'sessions#new', :as => :login
-get '/auth/:provider/callback', :to => 'sessions#create'
-get '/auth/failure', :to => 'sessions#failure'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

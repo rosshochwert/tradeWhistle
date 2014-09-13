@@ -29,6 +29,7 @@ class IndexController < ApplicationController
   	@consumer_key = session[:consumer_key]
   	@consumer_secret = session[:consumer_secret]
   	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
+  	MY_VARS[:access_token] = @access_token
   end
 
   #method to import all of the data form the league into the database
@@ -43,6 +44,8 @@ class IndexController < ApplicationController
 
 
   def getLeagueKey
+  	@access_token = MY_VARS[:access_token]
+
     @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
     @json_response = @access_token.request(:get, @urlLeagueKey)
     @json_hash = JSON.parse(@json_response.body)

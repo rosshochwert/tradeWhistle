@@ -35,8 +35,7 @@ end
 gem "twitter-bootstrap-rails"
 
 gem 'oauth'
-gem 'omniauth'
-gem 'omniauth-yahoo'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
