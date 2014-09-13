@@ -29,9 +29,6 @@ class IndexController < ApplicationController
   	@consumer_key = session[:consumer_key]
   	@consumer_secret = session[:consumer_secret]
   	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
-
-  	session[:access_token] = @access_token
-
   end
 
   def retrieveYahoo
