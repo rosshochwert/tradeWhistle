@@ -56,7 +56,8 @@ class TeamsController < ApplicationController
 
 
   #method to import all of the data form the league into the database
-  def import(access_token)
+  def import
+    access_token = params[:access_token]
     @leagueKey = getLeagueKey(access_token)
     getTeams(@league_key)
 
