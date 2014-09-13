@@ -58,9 +58,47 @@ class TeamsController < ApplicationController
   #method to import all of the data form the league into the database
   def import
 
-    
+    string = '{
+  "teams": [
+    {
+      "name": "first team bitches",
+      "id": 12345,
+      "players": [
+        {
+          "name": "other player",
+          "number": 2
+        },
+        {
+          "name": "ross",
+          "number": 3,
+          "stats": "3"
+        },
+        {
+          "name": "more players",
+          "number": 4
+        }
+      ]
+    },
+    {
+      "name": "first team bitches",
+      "id": 12345,
+      "players": [
+        {
+          "name": "ross",
+          "number": 2
+        },
+        {
+          "name": "ross",
+          "number": 2
+        }
+      ]
+    }
+  ]
+}'
+
+    stuff = JSON.parse(string)
     #make a call to the api to get a league, choose the first league and get all of the data
-    Teams.import(data)
+    Teams.import(stuff)
 
   end
 

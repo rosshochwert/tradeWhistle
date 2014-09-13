@@ -8,7 +8,7 @@ class Team < ActiveRecord::Base
 
 			#loop through all the players in a team (assuming they get returned and add them)
 			for player in team
-				@player = @newTeam.players.create(:name => player["player"])
+				@player = @newTeam.players.create(:name => player["name"])
 			end
 		end
 	end
