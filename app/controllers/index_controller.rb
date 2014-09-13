@@ -29,7 +29,8 @@ class IndexController < ApplicationController
   	@consumer_key = session[:consumer_key]
   	@consumer_secret = session[:consumer_secret]
   	@access_token = @request_token.get_access_token(:oauth_verifier => verifier_code)
-  	@json_response = @access_token.request(:get, "http://fantasysports.yahooapis.com/fantasy/v2/league/223.l.431/teams?format=json")
+  	@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
+  	@json_response = @access_token.request(:get, @urlLeagueKey)
 	@json_hash = JSON.parse(@json_response.body)
   end
 

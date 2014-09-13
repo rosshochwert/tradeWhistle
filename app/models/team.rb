@@ -10,7 +10,6 @@ class Team < ActiveRecord::Base
 		    alert v
 		  end
 		end
-
 	end
 
 
