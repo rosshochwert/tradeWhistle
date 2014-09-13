@@ -1,4 +1,5 @@
 body{
+	background-image: url(http://dailyfantasysportsreviews.info/wp-content/uploads/2013/10/football-field.jpg);
     padding-top: 70px;
 }
 
@@ -10,4 +11,24 @@ body{
 .frame{
     border-color: #000;
     border-radius: 5px;
+}
+
+.container-sm-height {
+	background-color: white;
+	/*border: 2px solid;*/
+	border-radius: 10px;
+}
+
+#logo {
+	height: 175px;
+	width: 175px;
+}
+
+.col-md-8{
+	width: 400px;
+}
+
+.dropdown{
+	float:left;
+	display:inline;
 }
