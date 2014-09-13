@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
 	has_many :players
 
 
-	def self.impot(data)
+	def self.import(data)
 		data.each do |key, value|
 		  alert key
 		  value.each do |k,v|
