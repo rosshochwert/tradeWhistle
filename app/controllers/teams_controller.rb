@@ -58,8 +58,8 @@ class TeamsController < ApplicationController
     @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
     @teamHash.each do |key,value|
       puts key
-      puts value["team"][0][0] #team key?
-      puts value["team"][0][2] #team name?
+      puts value["team"][0][0]["team_key"] #team key?
+      puts value["team"][0][2]["name"] #team name?
 
      # Team.create!(:key => key, :name => name)
     end
