@@ -134,7 +134,7 @@ var opponent_canvas = d3.select(".opp-team")
         .attr("width", "100%")
         .attr("height", 540);
 
-for (i = 0, i < league.length; i++){
+for (i = 0; i < league.length; i++){
    var tempCanvas = d3.select(".league")
         .append('div')
             .style('margin', '5px')
