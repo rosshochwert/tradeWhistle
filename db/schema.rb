@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914030736) do
+ActiveRecord::Schema.define(version: 20140914044439) do
 
   create_table "players", force: true do |t|
     t.string   "first_name"
@@ -20,8 +20,9 @@ ActiveRecord::Schema.define(version: 20140914030736) do
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string  "yahoo_pid"
+    t.integer  "yahoo_pid"
     t.string   "position"
+    t.integer  "percentOwned"
   end
 
   add_index "players", ["team_id"], name: "index_players_on_team_id"

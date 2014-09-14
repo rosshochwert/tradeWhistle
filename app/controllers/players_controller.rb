@@ -38,7 +38,21 @@ class PlayersController < ApplicationController
     #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
     @json_response = $access_token.request(:get, @urlLeagueKey)
     @json_hash = JSON.parse(@json_response.body)
-    puts @json_hash
+    @playersStatHash = @json_hash["fantasy_content"]["league"][1]["players"]
+    @playersStatHash.each do |key,value|
+      if key === "count"
+        next
+      end
+
+      playerkey = value["player"][0][0]
+      percent = value["player"][0][1]["percent_owned"][1].to_i
+
+      @player = Players.find_by(yahoo_pid: playerkey)
+      
+      @player.update_attributes(:percentOwned => percent)
+
+    end
+
   end
 
   def downloadStat(playerID)
