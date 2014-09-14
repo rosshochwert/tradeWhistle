@@ -79,7 +79,7 @@ teams.forEach(function(team){
 
         var projectedScores = [],
             prk = [],
-            percentOwned = [0, 1];
+            percentOwned = [0, 100];
         /*
 for(var team in league){
     for(var player in league[team]){ 
@@ -129,7 +129,7 @@ for(var team in league){
             .attr("y", rectHeight / 2)
             .attr("dy", ".35em")
             .text(function(d) {
-                return d.position + " | " + d.name;
+                return d.position + " | " + d.first_name;
             });
 
         var opponent_canvas = d3.select(".opp-team")
@@ -231,7 +231,7 @@ for(var team in league){
                 .attr("y", rectHeight / 2)
                 .attr("dy", ".35em")
                 .text(function(d) {
-                    return d.position + " | " + d.name;
+                    return d.position + " | " + d.first_name;
                 });
 
         }
