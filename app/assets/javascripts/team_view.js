@@ -79,7 +79,7 @@ teams.forEach(function(team){
 
         var projectedScores = [],
             prk = [],
-            percentOwned = [0, 100];
+            percentOwned = [100, 0];
         /*
 for(var team in league){
     for(var player in league[team]){ 
