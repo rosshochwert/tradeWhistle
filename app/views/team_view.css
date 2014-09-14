@@ -1,0 +1,36 @@
+body{
+	background-image: url(http://dailyfantasysportsreviews.info/wp-content/uploads/2013/10/football-field.jpg);
+    padding-top: 70px;
+}
+
+.prof-pic{
+    padding: 10px;
+    width:100%;
+}
+
+.frame{
+    border-color: #000;
+    border-radius: 5px;
+}
+
+.container-sm-height {
+	background-color: white;
+	/*border: 2px solid;*/
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+#logo {
+	height: 175px;
+	width: 175px;
+}
+
+.dropdown{
+	float:left;
+	display:inline;
+}
+
+.opp-spot{
+    padding:1;
+}
