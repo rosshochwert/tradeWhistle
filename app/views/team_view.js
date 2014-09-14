@@ -56,11 +56,9 @@ var teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7
 
 teams.forEach(function(team){
     league[team] = [];
-    console.log(team);
     for(i = 1; i <= 15; i++){
         var draftee = draftpos(i);
         league[team].push(draftee);
-        console.log(draftee);
     }
 })
 
@@ -90,14 +88,13 @@ var valueScale = d3.scale.quantize()
     .domain(d3.extent(projectedScores))
     .range(['#109510','#31ff3a','#f7d129', '#faed00','#de6905','#f70000']);
 
-console.log(d3.entries(league['Team 1']));
 
 var roster = team_canvas.selectAll('g')
         .data(league['Team 1']).enter()
         .append('g')
             .attr("transform", function(d, i) { return "translate(0," + i * rectHeight + ")"; });
 
-roster.append('rect')
+var rosterRect = roster.append('rect')
     .attr('class', 'roster-spot')
     .attr('fill', function(d){
         return valueScale(d.projected);
@@ -105,7 +102,7 @@ roster.append('rect')
     .attr('width', '100%')
     .attr('height', rectHeight);
 
-roster.append('text')
+var rosterText = roster.append('text')
     .attr("x", 10)
     .attr("y", rectHeight / 2)
     .attr("dy", ".35em")
@@ -118,18 +115,16 @@ var opponent_canvas = d3.select(".opp-team")
         .attr("width", "100%")
         .attr("height", 540);
 
-var opp_roster = opponent_canvas.selectAll('g')
-        .data().enter()
-        .append(
-
-console.log(d3.entries(league));
+var opp_roster,
+    opp_rosterRect,
+    opp_rosterText;
 
 for (var key in league){
    var tempCanvas = d3.select(".league")
         .append('div')
             .style('margin', '5px')
             .attr('class', 'col-md-2 small-team')
-            .attr('id', key);
+            .attr('name', key);
    
    tempCanvas.append('span')
         .text(key);
@@ -164,7 +159,7 @@ for (var key in league){
 }
 
 
-$('.metric').click(function(element){
+$('.metric').click(function(){
     if($(this).attr('value') == "projected"){
         console.log("projected");
         valueScale.domain(d3.extent(projectedScores));
@@ -179,8 +174,42 @@ $('.metric').click(function(element){
     }
 })
 
-function populateOpponent(){
-    
+
+
+$('.small-team').click(function(){
+    populateOpponent($(this).attr('name'));
+})
+
+function populateOpponent(team){
+    if($('.opp-spot').length>0){
+        opp_roster.remove();
+        createOppRoster(team);
+    }else{
+        createOppRoster(team);
+    }
+}
+
+function createOppRoster(team){
+    opp_roster = opponent_canvas.selectAll('g')
+            .data(league[team]).enter()
+            .append('g')
+                .attr("transform", function(d, i) { return "translate(0," + i * rectHeight + ")"; });
+        
+        opp_rosterRect = opp_roster.append('rect')
+                .attr('class', 'opp-spot')
+                .attr('fill', function(d){
+                    return valueScale(d.projected);
+                })
+                .attr('width', '100%')
+                .attr('height', rectHeight);
+        
+        opp_rosterText = opp_roster.append('text')
+                .attr("x", 10)
+                .attr("y", rectHeight / 2)
+                .attr("dy", ".35em")
+                .text(function(d){
+                            return d.position +" | " + d.name;});
+
 }
 
 /*var league_canvas = d3.select(".league")

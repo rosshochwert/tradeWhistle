@@ -31,19 +31,6 @@ body{
 	display:inline;
 }
 
-.roster-spot{
-    stroke: #000;
-    stroke-width: 2px;
+.opp-spot{
+    padding:1;
 }
-
-.small-spot{
-    stroke: #000;
-    stroke-width:1px;
-}
-
-.q0-6 { fill:#109510; }
-.q1-6 { fill:#31ff3a; }
-.q2-6 { fill:#f7d129; }
-.q3-6 { fill:#faed00; }
-.q4-6 { fill:#de6905; }
-.q5-6 { fill:#f70000; }
