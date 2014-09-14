@@ -24,8 +24,8 @@ class PlayersController < ApplicationController
   #get all the stuff
   def downloadTBD
 
-    just do a collection!
-      
+    #just do a collection!
+
     @players = Player.all
     @players.each do |player|
       @playerHash = downloadStat(player.yahoo_pid)
