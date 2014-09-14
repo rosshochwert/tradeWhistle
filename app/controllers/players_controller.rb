@@ -48,9 +48,12 @@ class PlayersController < ApplicationController
      
       percent = value["player"][1]["percent_owned"][1]["value"].to_i
 
+      puts playerkey
 
       @player = Player.find_by(yahoo_pid: playerkey)
 
+      puts @player
+      
       @player.update_attributes(:percentOwned => percent)
 
     end
