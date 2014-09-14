@@ -63,13 +63,12 @@ class TeamsController < ApplicationController
       end
 
       puts key
-      puts value["team"][0][0]["team_key"] #team key?
-      puts value["team"][0][2]["name"] #team name?
+      key = value["team"][0][0]["team_key"] #team key?
+      name = value["team"][0][2]["name"] #team name?
 
-      print "Roster"
       puts getTeamRoster(value["team"][0][0]["team_key"])
 
-      #Team.create!(:key => key, :name => name)
+      Team.create!(:key => key, :name => name)
     end
 
     #make a call to the api to get a league, choose the first league and get all of the data
