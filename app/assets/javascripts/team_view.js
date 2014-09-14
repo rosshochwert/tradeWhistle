@@ -8,7 +8,7 @@ var wrs =["Allen Hurns","A.J. Green","Cordarrelle Patterson","Steve Smith Sr.","
 var tes =["Julius Thomas","Vernon Davis","Greg Olsen","Martellus Bennett","Zach Ertz","Dwayne Allen","Larry Donnell","Rob Gronkowski","Delanie Walker","Antonio Gates","Anthony Fasano","Dennis Pitta","Jimmy Graham","Kyle Rudolph","Levine Toilolo","Niles Paul","Jared Cook","Jeff Cumberland","Zach Miller","Brandon Myers","Jordan Cameron","Travis Kelce","Joseph Fauria","Marcedes Lewis","Owen Daniels","Jim Dray","Tyler Eifert*","Mychal Rivera","Heath Miller","John Carlson","Andrew Quarless","Charles Clay","Coby Fleener","Ladarius Green","Rhett Ellison","Taylor Thompson","Austin Seferian- Jenkins*","Jason Witten","Dante Rosario","Brent Celek","Gary Barnidge","Jermaine Gresham","Lance Kendricks","Rob Housler","Tim Wright","Brian Leonhardt","Tony Gonzalez","Dallas Clark","Visanthe Shiancoe","Kellen Winslow"];
 var dsts =["Chicago Bears","Arizona Cardinals","Green Bay Packers","New York Giants","Detroit Lions","Washington Redskins","Pittsburgh Steelers","Philadelphia Eagles","St. Louis Rams","San Francisco 49ers","Cleveland Browns","Indianapolis Colts","Dallas Cowboys","Oakland Raiders","New England Patriots","Tennessee Titans","Denver Broncos","San Diego Chargers","New York Jets","Kansas City Chiefs","Buffalo Bills","Minnesota Vikings","Miami Dolphins","Atlanta Falcons","New Orleans Saints","Cincinnati Bengals","Seattle Seahawks","Tampa Bay Buccaneers","Jacksonville Jaguars","Carolina Panthers","Baltimore Ravens","Houston Texans"];
 var ks =["Matt Bryant","Mike Nugent","Ryan Succop","Caleb Sturgis","Shaun Suisham","Dan Carpenter","Blair Walsh","Shayne Graham","Cody Parkey","Stephen Gostkowski","Steven Hauschka","Billy Cundiff","Robbie Gould","Nick Folk","Greg Zuerlein","Nate Freese","Graham Gano","Chandler Catanzaro","Brandon McManus","Adam Vinatieri","Randy Bullock","Nick Novak","Dan Bailey","Josh Scobee","Mason Crosby","Phil Dawson","Justin Tucker","Cairo Santos","Sebastian Janikowski","Josh Brown","Patrick Murray","David Akers","Rian Lindell"];
-
+/*
 function draftpos(round){
 	var pos = "";
 	var poslist;
@@ -49,6 +49,15 @@ function draftpos(round){
 	return player;
 }
 
+teams.forEach(function(team){
+    league[team] = [];
+    for(i = 1; i <= 15; i++){
+        var draftee = draftpos(i);
+        league[team].push(draftee);
+        console.log(draftee);
+    }
+});*/
+    
 var teamsRoss = [];
 
 $.ajax({
@@ -63,28 +72,21 @@ $.ajax({
             }
     });
 
-var teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", "Team 10"];
+//var teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", "Team 10"];
 
-teams.forEach(function(team){
-    league[team] = [];
-    for(i = 1; i <= 15; i++){
-        var draftee = draftpos(i);
-        league[team].push(draftee);
-        console.log(draftee);
-    }
-});
+
 
 var projectedScores = [],
     prk = [],
-    percentOwned =[];
-
+    percentOwned =[0,1];
+/*
 for(var team in league){
     for(var player in league[team]){ 
         projectedScores.push(league[team][player]['projected']);
         prk.push(league[team][player]['prk']);
         percentOwned.push(league[team][player]['owned']);
     }
-};
+};*/
 
 var height = 540;
 
@@ -106,7 +108,7 @@ var valueScale = d3.scale.quantize()
 
 
 var roster = team_canvas.selectAll('g')
-        .data(league['Team 1']).enter()
+        .data(league[9]).enter()
         .append('g')
             .attr("class", "groups")
             .attr("transform", function(d, i) { return "translate(0," + i * rectHeight + ")"; });
@@ -132,15 +134,15 @@ var opponent_canvas = d3.select(".opp-team")
         .attr("width", "100%")
         .attr("height", 540);
 
-for (var key in league){
+for (i = 0, i < league.length; i++){
    var tempCanvas = d3.select(".league")
         .append('div')
             .style('margin', '5px')
             .attr('class', 'col-md-2 small-team')
-            .attr('name', key);
+            .attr('index', i);
    
    tempCanvas.append('span')
-        .text(key);
+        .text(league[i]['name']);
     
     tempCanvas.append('br');
     
@@ -149,7 +151,7 @@ for (var key in league){
                 .attr('height', 250);
     
     var tempRoster = tempSVG.selectAll('g')
-        .data(league[key]).enter()
+        .data(league[i]).enter()
         .append('g')
             .attr("transform", function(d, i) { return "translate(0," + i * smallHeight + ")"; });
     
@@ -190,7 +192,7 @@ $('.metric').click(function(){
 
 
 $('.small-team').click(function(){
-    populateOpponent($(this).attr('name'));
+    populateOpponent($(this).attr('index'));
 });
 
 function populateOpponent(team){
