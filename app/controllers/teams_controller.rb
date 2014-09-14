@@ -106,9 +106,21 @@ class TeamsController < ApplicationController
   end
 
   def getTeamRoster(key)
-    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/team/' + key + '/roster/players?format=json'
-    @json_response = $access_token.request(:get, @url)
-    @json_hash = JSON.parse(@json_response.body)
+
+    working = false
+
+    while !working do
+      begin
+        @url = 'http://fantasysports.yahooapis.com/fantasy/v2/team/' + key + '/roster/players?format=json'
+        @json_response = $access_token.request(:get, @url)
+        @json_hash = JSON.parse(@json_response.body)
+      rescue
+        puts "fucked up again"
+      end
+
+      working = true
+    end
+
   end
 
 
