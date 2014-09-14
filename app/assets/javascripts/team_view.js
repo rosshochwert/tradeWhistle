@@ -235,9 +235,16 @@ for(var team in league){
                 });
 
         }
+        var positionDict = {
+            "QB": 1,
+            "RB": 2,
+            "WR": 3,
+            "TE": 4,
+            "DEF": 5,
+            "K": 6
+        }
 
-
-        $(".sort").click(function() {
+        $(".sort-cat").click(function() {
             var transition = team_canvas.transition().duration(750);
             var opp_transition = opponent_canvas.transition().duration(750);
 
@@ -261,7 +268,7 @@ for(var team in league){
         });
 
         function positionSort(a, b){
-            if()
+            return positionDict(a.position)-positionDict(b.position);
         }
 
         /*var league_canvas = d3.select(".league")
