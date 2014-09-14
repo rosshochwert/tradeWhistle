@@ -91,10 +91,20 @@ class TeamsController < ApplicationController
   end
 
   def getLeagueKey
-    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
-    @json_response = $access_token.request(:get, @urlLeagueKey)
-    @json_hash = JSON.parse(@json_response.body)
-    $league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]["league_key"]
+
+    working = false
+
+    while !working do
+      begin
+        @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
+        @json_response = $access_token.request(:get, @urlLeagueKey)
+        @json_hash = JSON.parse(@json_response.body)
+        $league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]["league_key"]
+        working = true
+
+      rescue
+        puts "Error!!!"
+      end
   end
 
   def getTeams(key)
@@ -109,7 +119,7 @@ class TeamsController < ApplicationController
         working = true
 
       rescue
-        puts "fucked up again"
+        puts "Error!!!!!"
       end
 
     end
@@ -129,7 +139,7 @@ class TeamsController < ApplicationController
         working = true
 
       rescue
-        puts "fucked up again"
+        puts "Error!!!"
       end
 
 

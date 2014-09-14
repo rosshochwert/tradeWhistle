@@ -34,18 +34,27 @@ class IndexController < ApplicationController
   #method to import all of the data form the league into the databas
 
   def retrieveYahoo
-	@auth_consumer=OAuth::Consumer.new @consumer_key, 
-								  @consumer_secret, {
-								  :site					=> @yahoo_oauth_url,
-								  :scheme               => :query_string,
-								  :http_method			=> :get,
-								  :request_token_path   => @yahoo_oauth_request_token_path,
-								  :access_token_path    => @yahoo_oauth_access_token_path,
-								  :authorize_path       => @yahoo_oauth_authorize_path
-								   }
- 
-	# Set request token 
-	@request_token = @auth_consumer.get_request_token(:oauth_callback => @callback_url)
-	session[:request_token] = @request_token
+  	 working = false
+
+    while !working do
+      begin
+		@auth_consumer=OAuth::Consumer.new @consumer_key, 
+									  @consumer_secret, {
+									  :site					=> @yahoo_oauth_url,
+									  :scheme               => :query_string,
+									  :http_method			=> :get,
+									  :request_token_path   => @yahoo_oauth_request_token_path,
+									  :access_token_path    => @yahoo_oauth_access_token_path,
+									  :authorize_path       => @yahoo_oauth_authorize_path
+									   }
+	 
+		# Set request token 
+		@request_token = @auth_consumer.get_request_token(:oauth_callback => @callback_url)
+		session[:request_token] = @request_token
+		working = true
+
+	rescue
+		puts "Error!!!"
+	end
   end
 end
