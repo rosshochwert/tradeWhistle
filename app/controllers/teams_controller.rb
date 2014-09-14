@@ -53,8 +53,8 @@ class TeamsController < ApplicationController
 
 
   def importData
-    @leagueKey = getLeagueKey
-    @teamsData = getTeams(@league_key)
+    $leagueKey = getLeagueKey
+    @teamsData = getTeams($league_key)
     @teamHash = @teamsData["fantasy_content"]["league"][1]["teams"]
 
     @teamHash.each do |key,value|
@@ -96,7 +96,7 @@ class TeamsController < ApplicationController
     @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=nfl/leagues?format=json"
     @json_response = $access_token.request(:get, @urlLeagueKey)
     @json_hash = JSON.parse(@json_response.body)
-    @league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]["league_key"]
+    $league_key = @json_hash["fantasy_content"]["users"]["0"]["user"][1]["games"]["0"]["game"][1]["leagues"]["0"]["league"][0]["league_key"]
   end
 
   def getTeams(key)
