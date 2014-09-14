@@ -1,1 +1,11 @@
-<a href="<%=h @link %>">This is the Yahoo Login Link! Please click here in order to authorize us access to use your shtuff!</a>
+<div class="container">
+      <h1> TradeWhistle </h1>
+		<%= image_tag "whistle1.png" %>
+		<form class="form-signin" role="form">
+        <h2 class="form-signin-heading">Log In</h2>
+        <input type="email" class="form-control" placeholder="Yahoo! ID"autofocus>
+        <input type="password" class="form-control" placeholder="Password">
+        <a href="<%=h @link %>" class="btn btn-lg btn-primary btn-block" id= "yahoo">Sign In with a Yahoo! ID</a>
+      </form>
+
+    </div> <!-- /container -->
