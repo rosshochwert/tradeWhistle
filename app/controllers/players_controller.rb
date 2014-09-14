@@ -46,7 +46,7 @@ class PlayersController < ApplicationController
 
       playerkey = value["player"][0][0]["player_key"]
       
-      full_name = value["player"][0][0]["name"]["full"]
+      full_name = value["player"][0][2]["name"]["full"]
 
       percent = value["player"][1]["percent_owned"][1]["value"].to_i
 
