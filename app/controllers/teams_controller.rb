@@ -81,6 +81,9 @@ class TeamsController < ApplicationController
     @json_hash = JSON.parse(@json_response.body)
   end
 
+  def andrewGetsTheTeam
+
+  end
 
 
   # DELETE /teams/1
