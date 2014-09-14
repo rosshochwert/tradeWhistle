@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-var league = {};
+var league;
 
 var qbs =["Matt Ryan","Matthew Stafford","Andrew Luck","Peyton Manning","Carson Palmer","Jake Locker","Derek Anderson","Andy Dalton","Jay Cutler","Colin Kaepernick","Russell Wilson","Ben Roethlisberger","Chad Henne","Drew Brees","Joe Flacco","EJ Manuel","Matt Cassel","Nick Foles","Derek Carr","Josh McCown","Ryan Fitzpatrick","Brian Hoyer","Ryan Tannehill","Philip Rivers","Geno Smith","Tony Romo","Alex Smith","Aaron Rodgers","Robert Griffin","Eli Manning","Austin Davis","Shaun Hill","Jon Kitna","Matt Hasselbeck","Michael Vick",];
 var rbs =["Marshawn Lynch","Knowshon Moreno","Mark Ingram","DeMarco Murray","Matt Forte","Chris Ivory","Rashad Jennings","Isaiah Crowell","Darren Sproles","Chris Johnson","Justin Forsett","Montee Ball","C.J. Spiller","Ryan Mathews","Shane Vereen","LeSean McCoy","Antone Smith","Joique Bell","Carlos Hyde","Lamar Miller","Giovani Bernard","Terrance West","Arian Foster","Jacquizz Rodgers","Alfred Morris","Adrian Peterson*","Ahmad Bradshaw","Pierre Thomas","Stepfan Taylor","Khiry Robinson","DeAngelo Williams","Fred Jackson","Shonn Greene","Derrick Coleman","Frank Gore","John Kuhn","Darrel Young","Anthony Dixon","LeGarrette Blount","Steven Jackson","Reggie Bush","Jorvorskie Lane","Toby Gerhart","Roy Helu","Trent Richardson","Bobby Rainey","Andre Ellington","Benjamin Cunningham","Ben Tate*","James Starks","Eddie Lacy","Zac Stacy","Leon Washington","Jonathan Stewart","Dexter McCluster","Maurice Jones-Drew","Jamaal Charles","Jonathan Dwyer","Stevan Ridley","Robert Turbin","Lance Dunbar","C.J. Anderson","Bishop Sankey","Devonta Freeman","Darren McFadden","Mike Tolbert","Matt Asiata","Jeremy Hill","Willis McGahee","Greg Jones","Vonta Leach","Ronnie Brown","Brandon Jacobs","Michael Robinson","Montell Owens","Brian Leonard","Michael Bush","Le'Ron McClain","Jason Snelling","Jackie Battle","Felix Jones","Rashard Mendenhall","Ray Rice","Tashard Choice","Jerome Felton","Jalen Parmele","Spencer Larsen","Lex Hilliard","Peyton Hillis","Jed Collins","Marcel Reece","BenJarvus Green-Ellis","Darius Reynaud","Kahlil Bell","Donald Brown","Andre Brown","Tony Fiammetta","Mike Goodson"];
@@ -66,7 +66,7 @@ $.ajax({
             url: '/teams.json',
             dataType: 'json',
             success: function (received_data) {
-               teamsRoss = received_data;
+               league = received_data;
             },
             error: function (result) {
             }
@@ -116,7 +116,7 @@ var roster = team_canvas.selectAll('g')
 var rosterRect = roster.append('rect')
     .attr('class', 'roster-spot')
     .attr('fill', function(d){
-        return valueScale(d.owned);
+        return valueScale(d.percentOwned);
     })
     .attr('width', '100%')
     .attr('height', rectHeight);
@@ -158,7 +158,7 @@ for (i = 0, i < league.length; i++){
     tempRoster.append('rect')
         .attr('class', 'small-spot')
         .attr('fill', function(d){
-            return valueScale(d.owned);
+            return valueScale(d.percentOwned);
         })
         .attr('width', '100%')
         .attr('height', smallHeight);
