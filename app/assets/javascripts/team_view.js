@@ -140,7 +140,7 @@ for (var key in league){
     var tempRoster = tempSVG.selectAll('g')
         .data(league[key]).enter()
         .append('g')
-            .attr("transform", function(d, i) { return "translate(0," + i * smallHeight + ")"; });;
+            .attr("transform", function(d, i) { return "translate(0," + i * smallHeight + ")"; });
     
     tempRoster.append('rect')
         .attr('class', 'small-spot')
@@ -195,6 +195,7 @@ function createOppRoster(team){
     opp_roster = opponent_canvas.selectAll('g')
             .data(league[team]).enter()
             .append('g')
+                .attr('class', 'groups')
                 .attr("transform", function(d, i) { return "translate(0," + i * rectHeight + ")"; });
         
         opp_rosterRect = opp_roster.append('rect')
@@ -216,10 +217,15 @@ function createOppRoster(team){
 
 $(".sort").click(function(){
     var transition = team_canvas.transition().duration(750);
+    var opp_transition = opponent_canvas.transition().duration(750);
     
     roster.sort(function(a,b){ return a.owned-b.owned;});
+    opp_roster.sort(function(a,b){ return a.owned-b.owned;});
     
     transition.selectAll('.groups')
+        .attr("transform", function(d, i) { return "translate(0," + i * rectHeight + ")"; });
+    
+    opp_transition.selectAll('.groups')
         .attr("transform", function(d, i) { return "translate(0," + i * rectHeight + ")"; });
 });
 
