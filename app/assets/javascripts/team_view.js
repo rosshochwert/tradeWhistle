@@ -7,7 +7,6 @@ var tes =["Julius Thomas","Vernon Davis","Greg Olsen","Martellus Bennett","Zach 
 var dsts =["Chicago Bears","Arizona Cardinals","Green Bay Packers","New York Giants","Detroit Lions","Washington Redskins","Pittsburgh Steelers","Philadelphia Eagles","St. Louis Rams","San Francisco 49ers","Cleveland Browns","Indianapolis Colts","Dallas Cowboys","Oakland Raiders","New England Patriots","Tennessee Titans","Denver Broncos","San Diego Chargers","New York Jets","Kansas City Chiefs","Buffalo Bills","Minnesota Vikings","Miami Dolphins","Atlanta Falcons","New Orleans Saints","Cincinnati Bengals","Seattle Seahawks","Tampa Bay Buccaneers","Jacksonville Jaguars","Carolina Panthers","Baltimore Ravens","Houston Texans"];
 var ks =["Matt Bryant","Mike Nugent","Ryan Succop","Caleb Sturgis","Shaun Suisham","Dan Carpenter","Blair Walsh","Shayne Graham","Cody Parkey","Stephen Gostkowski","Steven Hauschka","Billy Cundiff","Robbie Gould","Nick Folk","Greg Zuerlein","Nate Freese","Graham Gano","Chandler Catanzaro","Brandon McManus","Adam Vinatieri","Randy Bullock","Nick Novak","Dan Bailey","Josh Scobee","Mason Crosby","Phil Dawson","Justin Tucker","Cairo Santos","Sebastian Janikowski","Josh Brown","Patrick Murray","David Akers","Rian Lindell"];
 
-
 function draftpos(round){
 	var pos = "";
 	var poslist;
@@ -118,6 +117,8 @@ var opponent_canvas = d3.select(".opp-team")
         .attr("width", "100%")
         .attr("height", 540);
 
+alert("Here");
+
 for (var key in league){
    var tempCanvas = d3.select(".league")
         .append('div')
@@ -171,13 +172,13 @@ $('.metric').click(function(){
         console.log("owned");
         valueScale.domain(d3.extent(percentOwned));
     }
-})
+});
 
 
 
 $('.small-team').click(function(){
     populateOpponent($(this).attr('name'));
-})
+});
 
 function populateOpponent(team){
     if($('.opp-spot').length>0){
