@@ -21,6 +21,29 @@ class PlayersController < ApplicationController
   def edit
   end
 
+  #get all the stuff
+  def downloadTBD
+    @players = Player.all
+    @players.each do |player|
+      @playerHash = downloadStat(player.yahoo_pid)
+    end 
+
+  end
+
+  def download
+    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
+    @json_response = $access_token.request(:get, @urlLeagueKey)
+    @json_hash = JSON.parse(@json_response.body)
+    puts @json_hash
+  end
+
+  def downloadStat(playerID)
+    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/" + playerID + "/stats?format=json"
+    @json_response = $access_token.request(:get, @urlLeagueKey)
+    @json_hash = JSON.parse(@json_response.body)
+    return @json_hash
+  end
+
   # POST /players
   # POST /players.json
   def create

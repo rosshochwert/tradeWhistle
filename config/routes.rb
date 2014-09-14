@@ -20,6 +20,8 @@ TradeWhistle::Application.routes.draw do
 
   get '/import' => 'teams#importData'
 
+  get '/download' => 'players#download'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

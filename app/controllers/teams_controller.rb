@@ -80,7 +80,7 @@ class TeamsController < ApplicationController
 
         full_name = values["player"][0][2]["name"]["full"]
         position = values["player"][0][9]["display_position"]
-        yahoo_pid = values["player"][0][1]["player_id"].to_i
+        yahoo_pid = values["player"][0][0]["player_key"].to_i
 
         @player = @team.players.find_or_create_by(first_name: full_name, position: position, yahoo_pid: yahoo_pid)
 
