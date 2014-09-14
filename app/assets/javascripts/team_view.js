@@ -241,10 +241,10 @@ for(var team in league){
             var opp_transition = opponent_canvas.transition().duration(750);
 
             roster.sort(function(a, b) {
-                return a.owned - b.owned;
+                return a.percentOwned - b.percentOwned;
             });
             opp_roster.sort(function(a, b) {
-                return a.owned - b.owned;
+                return a.percentOwned - b.percentOwned;
             });
 
             transition.selectAll('.groups')
