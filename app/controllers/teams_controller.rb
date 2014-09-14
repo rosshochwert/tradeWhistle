@@ -68,7 +68,22 @@ class TeamsController < ApplicationController
 
       puts getTeamRoster(value["team"][0][0]["team_key"])
 
-      Team.find_or_create_by(key: key, name: name)
+      @team = Team.find_or_create_by(key: key, name: name)
+
+      @playerHash = getTeamRoster(key)["fantasy_content"]["team"][0][1]["roster"][0]["players"]
+      
+      @playerHash.each do |keys, values|
+        if keys === "count"
+          next
+        end
+
+        full_name = values[0][2]["name"]["full"]
+        position = values[9]["display_position"]
+        yahoo_pid = values[0][1]["player_id"].to_i
+
+        @player = @team.players.find_or_create_by(first_name: full_name, position: position, yahoo_pid: yahoo_pid)
+
+      end
 
     end
 
