@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
   end
 
   def download
-    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players?format=json"
+    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players/ownership?format=json"
     #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
     @json_response = $access_token.request(:get, @urlLeagueKey)
     @json_hash = JSON.parse(@json_response.body)
