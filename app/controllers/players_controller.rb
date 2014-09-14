@@ -48,9 +48,9 @@ class PlayersController < ApplicationController
       percent = value["player"][0]
       percent = value["player"][0][1]
       percent = value["player"][0][1]["percent_owned"]
-      percent = value["player"][0][1]["percent_owned"][1]
-      percent = value["player"][0][1]["percent_owned"][1]["value"]
-      percent = value["player"][0][1]["percent_owned"][1]["value"].to_i
+      percent = value["player"][0][1]["percent_owned"][0]
+      percent = value["player"][0][1]["percent_owned"][0]["value"]
+      percent = value["player"][0][1]["percent_owned"][0]["value"].to_i
 
 
       @player = Players.find_by(yahoo_pid: playerkey)
