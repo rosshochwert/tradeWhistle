@@ -34,30 +34,36 @@ class PlayersController < ApplicationController
   end
 
   def download
-    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=25;count=50/percent_owned?format=json"
-    #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
-    @json_response = $access_token.request(:get, @urlLeagueKey)
-    @json_hash = JSON.parse(@json_response.body)
-    @playersStatHash = @json_hash["fantasy_content"]["league"][1]["players"]
-    @playersStatHash.each do |key,value|
-      if key === "count"
-        next
+
+    for i in 0..5
+      low = i * 25
+      high = (i + 1) * 25 - 1
+      @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=" + low + ";count=" + high + "/percent_owned?format=json"
+    
+      #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=25;count=50/percent_owned?format=json"
+      #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
+      @json_response = $access_token.request(:get, @urlLeagueKey)
+      @json_hash = JSON.parse(@json_response.body)
+      @playersStatHash = @json_hash["fantasy_content"]["league"][1]["players"]
+      @playersStatHash.each do |key,value|
+        if key === "count"
+          next
+        end
+
+        playerkey = value["player"][0][0]["player_key"]
+        
+        full_name = value["player"][0][2]["name"]["full"]
+
+        percent = value["player"][1]["percent_owned"][1]["value"].to_i
+
+        puts playerkey
+
+        @player = Player.find_by(first_name: full_name)
+
+        unless @player.nil?
+          @player.update_attributes(:percentOwned => percent)
+        end
       end
-
-      playerkey = value["player"][0][0]["player_key"]
-      
-      full_name = value["player"][0][2]["name"]["full"]
-
-      percent = value["player"][1]["percent_owned"][1]["value"].to_i
-
-      puts playerkey
-
-      @player = Player.find_by(first_name: full_name)
-
-      unless @player.nil?
-        @player.update_attributes(:percentOwned => percent)
-      end
-
     end
 
   end
