@@ -70,7 +70,7 @@ class TeamsController < ApplicationController
 
       @team = Team.find_or_create_by(key: key, name: name)
 
-      @playerHash = getTeamRoster(key)["fantasy_content"]["team"][0][1]["roster"][0]["players"]
+      @playerHash = getTeamRoster(key)["fantasy_content"]["team"][1]["roster"][0]["players"]
       
       @playerHash.each do |keys, values|
         if keys === "count"
