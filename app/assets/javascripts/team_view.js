@@ -272,7 +272,7 @@ for(var team in league){
         });
 
         function positionSort(a, b){
-            return positionDict(a.position)-positionDict(b.position);
+            return positionDict[a.position]-positionDict[b.position];
         }
 
         /*var league_canvas = d3.select(".league")
