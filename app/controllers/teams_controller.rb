@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
   # GET /teams.json
   def index
     @teams = Team.all
+    format.json {render :json=> @teams, :include => :players}
   end
 
   # GET /teams/1
