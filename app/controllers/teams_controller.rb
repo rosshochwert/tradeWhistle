@@ -68,7 +68,8 @@ class TeamsController < ApplicationController
 
       puts getTeamRoster(value["team"][0][0]["team_key"])
 
-      Team.create!(:key => key, :name => name)
+      Team.find_or_create_by(key: key, name: name)
+
     end
 
     #make a call to the api to get a league, choose the first league and get all of the data
