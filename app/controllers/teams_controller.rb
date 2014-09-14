@@ -56,15 +56,17 @@ class TeamsController < ApplicationController
     @leagueKey = getLeagueKey
     @teams = getTeams(@league_key)
     @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
-
-    @counter = 0
+    counter = 0
     @teamHash.each do |key,value|
-      puts key + @counter + "AHHHHHHHHHHH"
+      puts "Counter is at " + counter
+      puts key
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
-      @counter += 1
+
+      counter = counter + 1
      # Team.create!(:key => key, :name => name)
     end
+
 
     #make a call to the api to get a league, choose the first league and get all of the data
     #Team.import(stuff)
@@ -83,8 +85,10 @@ class TeamsController < ApplicationController
     @json_hash = JSON.parse(@json_response.body)
   end
 
-  def andrewGetsTheTeam
-
+  def getTeamRoster(key)
+    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/league/' + key + '/roster/players?format=json'
+    @json_response = $access_token.request(:get, @url)
+    @json_hash = JSON.parse(@json_response.body)
   end
 
 
