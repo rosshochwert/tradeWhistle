@@ -114,8 +114,8 @@ class TeamsController < ApplicationController
         puts "fucked up again"
       end
 
-      return @json_hash
     end
+      return @json_hash
 
   end
 
