@@ -58,7 +58,7 @@ class TeamsController < ApplicationController
     @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
     counter = 0
     @teamHash.each do |key,value|
-      puts "Counter is at " + counter
+      puts counter
       puts key
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
