@@ -52,9 +52,9 @@ class PlayersController < ApplicationController
 
       @player = Player.find_by(yahoo_pid: playerkey)
 
-      puts @player.first_name
-
-      @player.update_attributes(:percentOwned => percent)
+      unless @player.nil?
+        @player.update_attributes(:percentOwned => percent)
+      end
 
     end
 

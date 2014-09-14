@@ -62,11 +62,9 @@ class TeamsController < ApplicationController
         next
       end
 
-      puts key
       key = value["team"][0][0]["team_key"] #team key?
       name = value["team"][0][2]["name"] #team name?
 
-      puts getTeamRoster(value["team"][0][0]["team_key"])
 
       @team = Team.find_or_create_by(key: key, name: name)
 
