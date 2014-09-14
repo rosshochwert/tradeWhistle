@@ -221,7 +221,7 @@ for(var team in league){
             opp_rosterRect = opp_roster.append('rect')
                 .attr('class', 'opp-spot')
                 .attr('fill', function(d) {
-                    return valueScale(d.owned);
+                    return valueScale(d.percentOwned);
                 })
                 .attr('width', '100%')
                 .attr('height', rectHeight);
