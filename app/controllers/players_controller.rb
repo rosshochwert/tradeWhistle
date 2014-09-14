@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
     for i in 0..5
       low = i * 25
       high = (i + 1) * 25 - 1
-      @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=" + low + ";count=" + high + "/percent_owned?format=json"
+      @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=" + low.to_s + ";count=" + high.to_s + "/percent_owned?format=json"
     
       #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=25;count=50/percent_owned?format=json"
       #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
