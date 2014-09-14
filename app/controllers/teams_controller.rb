@@ -59,10 +59,10 @@ class TeamsController < ApplicationController
 
     @counter = 0
     @teamHash.each do |key,value|
-      puts key
+      puts key + counter + "AHHHHHHHHHHH"
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
-
+      @counter += 1
      # Team.create!(:key => key, :name => name)
     end
 
