@@ -1,3 +1,7 @@
+<%= @teams %>
+<%= @teams.players.owernshipPercentage%>
+
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -72,6 +76,7 @@
           </div>
     </div>
     <script>
+        var data = <%= @teams %>
         $("[name='my-checkbox']").bootstrapSwitch();
         $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
 
