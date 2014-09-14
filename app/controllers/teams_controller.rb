@@ -66,7 +66,7 @@ class TeamsController < ApplicationController
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
 
-      printRoster
+      print "Roster"
       puts getTeamRoster(value["team"][0][0]["team_key"])
 
       #Team.create!(:key => key, :name => name)
