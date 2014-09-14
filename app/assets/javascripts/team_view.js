@@ -236,16 +236,18 @@ for(var team in league){
 
         }
 
+
         $(".sort").click(function() {
             var transition = team_canvas.transition().duration(750);
             var opp_transition = opponent_canvas.transition().duration(750);
 
-            roster.sort(function(a, b) {
-                return a.percentOwned - b.percentOwned;
-            });
-            opp_roster.sort(function(a, b) {
-                return a.percentOwned - b.percentOwned;
-            });
+            roster.sort($(".sort-cat").checked 
+                ? function(a, b) {return a.percentOwned - b.percentOwned;} 
+                : function(a,b){ return positionSort(a, b);});
+
+            opp_roster.sort($(".sort-cat").checked 
+                ? function(a, b) {return a.percentOwned - b.percentOwned;} 
+                : function(a,b){ return positionSort(a, b);});
 
             transition.selectAll('.groups')
                 .attr("transform", function(d, i) {
@@ -257,6 +259,10 @@ for(var team in league){
                     return "translate(0," + i * rectHeight + ")";
                 });
         });
+
+        function positionSort(a, b){
+            if()
+        }
 
         /*var league_canvas = d3.select(".league")
         .selectAll('div')
