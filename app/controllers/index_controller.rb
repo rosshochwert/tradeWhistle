@@ -37,8 +37,8 @@ class IndexController < ApplicationController
   	 working = false
 
     while !working do
-      begin
-		@auth_consumer=OAuth::Consumer.new @consumer_key, 
+    	begin
+			@auth_consumer=OAuth::Consumer.new @consumer_key, 
 									  @consumer_secret, {
 									  :site					=> @yahoo_oauth_url,
 									  :scheme               => :query_string,
@@ -48,13 +48,14 @@ class IndexController < ApplicationController
 									  :authorize_path       => @yahoo_oauth_authorize_path
 									   }
 	 
-		# Set request token 
-		@request_token = @auth_consumer.get_request_token(:oauth_callback => @callback_url)
-		session[:request_token] = @request_token
-		working = true
+			# Set request token 
+			@request_token = @auth_consumer.get_request_token(:oauth_callback => @callback_url)
+			session[:request_token] = @request_token
+			working = true
 
-	rescue
-		puts "Error!!!"
-	end
+		rescue
+			puts "Error!!!"
+		end
+  	end
   end
 end
