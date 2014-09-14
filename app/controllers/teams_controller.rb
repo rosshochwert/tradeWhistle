@@ -59,7 +59,9 @@ class TeamsController < ApplicationController
     puts @teamHash
 
     @teamHash.each do |key,value|
-      next if key.last?
+      if key === "count"
+        next
+      end
       puts key
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
