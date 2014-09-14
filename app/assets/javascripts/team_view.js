@@ -67,12 +67,14 @@ $.ajax({
             dataType: 'json',
             success: function (received_data) {
                league = received_data;
+               ajaxComplete();
             },
             error: function (result) {
             }
     });
 
-//var teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", "Team 10"];
+function ajaxComplete(){
+    //var teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", "Team 10"];
 
 
 
@@ -248,5 +250,7 @@ $(".sort").click(function(){
         .append('div')
             .style('margin', '5px')
             .attr('class', 'col-md-2')*/
+}
+
 });
 
