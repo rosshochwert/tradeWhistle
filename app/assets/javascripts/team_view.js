@@ -104,7 +104,7 @@ for(var team in league){
             smallHeight = 15;
 
         var valueScale = d3.scale.quantize()
-            .domain(d3.extent(percentOwned))
+            .domain(percentOwned)
             .range(['#109510', '#31ff3a', '#f7d129', '#faed00', '#de6905', '#f70000']);
 
 
