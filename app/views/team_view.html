@@ -38,49 +38,63 @@
 
           </div>
 
-        <div class="col-md-8 col-sm-height">
+        <div class="col-md-6 col-sm-height">
           <h3>Options</h3>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                Choose Team
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Team 1</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Team 2</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Team 3</a></li>
-            </ul>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                Choose Metric
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Projected Points (Weekly)</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">PRK</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Percent Owned</a></li>
-                <li role="presentation" class="divider"></li>
-              </ul>
-              <input type="checkbox" name="my-checkbox" checked>
-            </div>
+            <div class="panel panel-default">
+            <div class="panel-body">
+               <div class="btn-group">
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                   <span data-bind="label">Choose Team</span>&nbsp;<span class="caret"></span>
+                 </button>
+                 <ul class="dropdown-menu team-menu" role="menu">
+                   <li><a href="#">Team 1</a></li>
+                   <li><a href="#">Team 2</a></li>
+                   <li><a href="#">Team 3</a></li>
+                 </ul>
+               </div>
+                <div class="btn-group">
+                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                   <span data-bind="label">Choose Metric</span>&nbsp;<span class="caret"></span>
+                 </button>
+                 <ul class="dropdown-menu" role="menu">
+                   <li class = "metric" value = "projected"><a href="#">Point Projection</a></li>
+                   <li class = "metric" value = "prk"><a href="#">Position Rank</a></li>
+                   <li class = "metric" value = "owned"><a href="#">Percent Owned</a></li>
+                 </ul>
+               </div>
+                <input type="checkbox" name="my-checkbox" checked>
+             </div>
+          </div>
        </div>
-       <img id= "logo" src= "whistle1.png" align="right">
+          <div class = "col-md-2 col-sm-height">
+            <div class = "frame"><img id= "logo" src= "whistle1.png" align="right"></div>
+          </div>
         </div>
         <div class = "row">
             <div class = "col-md-2 col-sm-height cur-team">
             <h3>Your Team</h3></div>
             <div class = "col-md-2 col-sm-height opp-team">
             <h3>Opp Team</h3></div>
-            <div class = "col-md-8 col-sm-height all-team"></div>
+            <div class = "col-md-8 col-sm-height all-team">
+                <h3>The League</h3>
+                <div class = "row league">
+                </div>
+            </div>
           </div>
-        <div class = "row">
-        </div>
-
-
     </div>
     <script>
         $("[name='my-checkbox']").bootstrapSwitch();
+        $( document.body ).on( 'click', '.dropdown-menu li', function( event ) {
+
+      var $target = $( event.currentTarget );
+
+      $target.closest( '.btn-group' )
+             .find( '[data-bind="label"]' ).text( $target.text() )
+                .end()
+             .children( '.dropdown-toggle' ).dropdown( 'toggle' );
+
+          return false;
+        });
     </script>
     <script src = "team_view.js"></script>
     </body>
