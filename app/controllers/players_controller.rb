@@ -34,7 +34,7 @@ class PlayersController < ApplicationController
   end
 
   def download
-    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T/percent_owned?format=json"
+    @urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/league/" + $league_key + "/players;status=T;start=25;count=50/percent_owned?format=json"
     #@urlLeagueKey = "http://fantasysports.yahooapis.com/fantasy/v2/player/331.p.25711/stats?format=json"
     @json_response = $access_token.request(:get, @urlLeagueKey)
     @json_hash = JSON.parse(@json_response.body)
@@ -48,9 +48,7 @@ class PlayersController < ApplicationController
       
       full_name = value["player"][0][2]["name"]["full"]
 
-      #percent = value["player"][1]["percent_owned"][1]["value"].to_i
-
-      percent = 40
+      percent = value["player"][1]["percent_owned"][1]["value"].to_i
 
       puts playerkey
 
