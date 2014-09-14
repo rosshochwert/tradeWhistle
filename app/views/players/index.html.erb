@@ -7,6 +7,9 @@
       <th>Last name</th>
       <th>Number</th>
       <th>Team</th>
+      <th>PIOSITION</th>
+      <th>PEE ID</th>
+
       <th></th>
       <th></th>
       <th></th>
@@ -19,6 +22,9 @@
         <td><%= player.first_name %></td>
         <td><%= player.last_name %></td>
         <td><%= player.number %></td>
+        <td><%= player.position %></td>
+        <td><%= player.yahoo_pid %></td>
+
         <td><%= player.team %></td>
         <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
