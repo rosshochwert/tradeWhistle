@@ -1,0 +1,55 @@
+#logo{
+	width: 325px;
+	height: 325px;
+}
+
+.container {
+  position: fixed;
+  width: 325px !important;
+  /*top: 50%;*/
+  left: 50%;
+  /*margin-top: -50px;*/
+  margin-left: -163px;
+}
+
+.form-signin {
+	width: 325px;
+	height: 325px;
+}
+
+body{
+    background-image: url(http://dailyfantasysportsreviews.info/wp-content/uploads/2013/10/football-field.jpg);
+    background-color: #73B873;
+    opacity: 1;
+
+}
+
+.form-signin-heading{
+	color: white;
+	text-shadow: 2px 0 0 black,
+		-2px 0 0 black,
+		0 2px 0 black,
+		0 -2px 0 black,
+		1px 1px black,
+		-1px -1px 0 black,
+		1px -1px 0 black,
+		-1px 1px 0 black;
+}
+
+h1{
+	color: white;
+	font-size: 53px;
+	text-shadow: 2px 0 0 black,
+		-2px 0 0 black,
+		0 2px 0 black,
+		0 -2px 0 black,
+		1px 1px black,
+		-1px -1px 0 black,
+		1px -1px 0 black,
+		-1px 1px 0 black;
+}
+
+#yahoo{
+	background-color: #572c73;
+	border-color: #572c73;
+}
