@@ -54,21 +54,25 @@ class TeamsController < ApplicationController
 
   def importData
     @leagueKey = getLeagueKey
-    @teams = getTeams(@league_key)
-    @teamHash = @teams["fantasy_content"]["league"][1]["teams"]
-    puts @teamHash
+    @teamsData = getTeams(@league_key)
+    @teamHash = @teamsData["fantasy_content"]["league"][1]["teams"]
+    @teams = Array.new
 
     @teamHash.each do |key,value|
       if key === "count"
         next
       end
+
       puts key
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
 
-     # Team.create!(:key => key, :name => name)
+      team = Team.create!(:key => key, :name => name)
+      @teams.push team
     end
 
+    puts "The following is the array of teams"
+    puts @teams
 
     #make a call to the api to get a league, choose the first league and get all of the data
     #Team.import(stuff)
