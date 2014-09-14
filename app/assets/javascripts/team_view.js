@@ -247,6 +247,7 @@ for(var team in league){
         var sortBy = true;
 
         $(".sort").click(function() {
+            console.log(sortBy);
             var transition = team_canvas.transition().duration(750);
             var opp_transition = opponent_canvas.transition().duration(750);
 
