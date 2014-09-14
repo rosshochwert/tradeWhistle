@@ -1,3 +1,5 @@
+$( document ).ready(function() {
+
 var league = {};
 
 var qbs =["Matt Ryan","Matthew Stafford","Andrew Luck","Peyton Manning","Carson Palmer","Jake Locker","Derek Anderson","Andy Dalton","Jay Cutler","Colin Kaepernick","Russell Wilson","Ben Roethlisberger","Chad Henne","Drew Brees","Joe Flacco","EJ Manuel","Matt Cassel","Nick Foles","Derek Carr","Josh McCown","Ryan Fitzpatrick","Brian Hoyer","Ryan Tannehill","Philip Rivers","Geno Smith","Tony Romo","Alex Smith","Aaron Rodgers","Robert Griffin","Eli Manning","Austin Davis","Shaun Hill","Jon Kitna","Matt Hasselbeck","Michael Vick",];
@@ -117,8 +119,6 @@ var opponent_canvas = d3.select(".opp-team")
         .attr("width", "100%")
         .attr("height", 540);
 
-alert("Here");
-
 for (var key in league){
    var tempCanvas = d3.select(".league")
         .append('div')
@@ -233,5 +233,5 @@ $(".sort").click(function(){
         .append('div')
             .style('margin', '5px')
             .attr('class', 'col-md-2')*/
-
+});
 
