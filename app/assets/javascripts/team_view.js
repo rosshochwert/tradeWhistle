@@ -49,10 +49,23 @@ function draftpos(round){
 	return player;
 }
 
+var teamsRoss;
+
+$.ajax({
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: '/teams.json',
+            dataType: 'json',
+            success: function (received_data) {
+               teamsRoss = received_data;
+            },
+            error: function (result) {
+            }
+    });
 
 var teams = ["Team 1", "Team 2", "Team 3", "Team 4", "Team 5", "Team 6", "Team 7", "Team 8", "Team 9", "Team 10"];
 
-teams.forEach(function(team){
+teamsRoss.forEach(function(team){
     league[team] = [];
     for(i = 1; i <= 15; i++){
         var draftee = draftpos(i);
