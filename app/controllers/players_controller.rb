@@ -45,12 +45,14 @@ class PlayersController < ApplicationController
       end
 
       playerkey = value["player"][0][0]["player_key"]
-     
+      
+      full_name = value["player"][0][0]["name"]["full"]
+
       percent = value["player"][1]["percent_owned"][1]["value"].to_i
 
       puts playerkey
 
-      @player = Player.find_by(yahoo_pid: playerkey)
+      @player = Player.find_by(first_name: full_name)
 
       unless @player.nil?
         @player.update_attributes(:percentOwned => percent)
