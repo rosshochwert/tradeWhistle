@@ -105,6 +105,7 @@ class TeamsController < ApplicationController
       rescue
         puts "Error!!!"
       end
+    end
   end
 
   def getTeams(key)
@@ -141,7 +142,6 @@ class TeamsController < ApplicationController
       rescue
         puts "Error!!!"
       end
-
 
     end
 
