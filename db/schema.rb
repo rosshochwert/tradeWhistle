@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140914030736) do
     t.integer  "team_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "yahoo_pid"
+    t.string  "yahoo_pid"
     t.string   "position"
   end
 
