@@ -66,6 +66,7 @@ class TeamsController < ApplicationController
       puts value["team"][0][0]["team_key"] #team key?
       puts value["team"][0][2]["name"] #team name?
 
+      printRoster
       puts getTeamRoster(value["team"][0][0]["team_key"])
 
       #Team.create!(:key => key, :name => name)
@@ -89,7 +90,7 @@ class TeamsController < ApplicationController
   end
 
   def getTeamRoster(key)
-    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/league/' + key + '/roster/players?format=json'
+    @url = 'http://fantasysports.yahooapis.com/fantasy/v2/team/' + key + '/roster/players?format=json'
     @json_response = $access_token.request(:get, @url)
     @json_hash = JSON.parse(@json_response.body)
   end
